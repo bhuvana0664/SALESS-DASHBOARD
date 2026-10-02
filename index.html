@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>SmartMart Analytics</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+    <h2>🛒 SmartMart</h2>
+
+    <nav>
+
+        <a href="#dashboard">
+            🏠 Dashboard
+        </a>
+
+        <a href="#sales">
+            📊 Sales
+        </a>
+
+        <a href="#products">
+            📦 Products
+        </a>
+
+        <a href="#customers">
+            👥 Customers
+        </a>
+
+        <a href="#inventory">
+            🏪 Inventory
+        </a>
+
+        <a href="#reports">
+            📄 Reports
+        </a>
+
+    </nav>
+
+</aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Header -->
+        <header class="dashboard-header">
+
+            <div>
+                <h1>SmartMart Analytics</h1>
+
+                <p>
+                    Welcome to your supermarket dashboard 👋
+                </p>
+
+                <span>
+                    Monitor sales, products, customers and inventory.
+                </span>
+            </div>
+
+            <div class="today-date">
+                📅 <span id="todayDate"></span>
+            </div>
+
+        </header>
+
+
+        <!-- Summary Cards -->
+        <section class="cards">
+
+            <div class="card">
+                <div class="card-icon">💰</div>
+
+                <h4>Total Revenue</h4>
+
+                <h2 id="totalRevenue">
+                    ₹0
+                </h2>
+            </div>
+
+
+            <div class="card">
+                <div class="card-icon">📦</div>
+
+                <h4>Products Sold</h4>
+
+                <h2 id="totalProducts">
+                    0
+                </h2>
+            </div>
+
+
+            <div class="card">
+                <div class="card-icon">🧾</div>
+
+                <h4>Total Sales</h4>
+
+                <h2 id="totalSales">
+                    0
+                </h2>
+            </div>
+
+
+            <div class="card">
+                <div class="card-icon">👥</div>
+
+                <h4>Customers</h4>
+
+                <h2 id="totalCustomers">
+                    0
+                </h2>
+            </div>
+
+        </section>
+
+
+        <!-- Sales Overview -->
+        <section class="chart-section">
+
+            <div class="section-header">
+
+                <h2>Sales Overview</h2>
+                <!-- Category Sales -->
+<section class="chart-section">
+
+    <div class="section-header">
+        <h2>Category-wise Sales</h2>
+        <p>Sales revenue by product category</p>
+    </div>
+
+    <div class="chart-container">
+
+        <canvas id="categoryChart"></canvas>
+
+    </div>
+
+</section>
+<section class="chart-section">
+
+    <div class="section-header">
+
+        <h2>Monthly Revenue</h2>
+
+        <p>Monthly sales revenue overview</p>
+
+    </div>
+    <section class="chart-section">
+
+    <div class="section-header">
+
+        <h2>Sales Channel Analysis</h2>
+
+        <p>Revenue distribution by sales channel</p>
+
+    </div>
+    <section class="chart-section">
+
+    <div class="section-header">
+
+        <h2>Product Performance</h2>
+
+        <p>Top products based on quantity sold</p>
+
+    </div>
+
+    <div class="chart-container">
+
+        <canvas id="productPerformanceChart"></canvas>
+
+    </div>
+
+</section>
+<section class="chart-section">
+
+    <div class="section-header">
+
+        <h2>Inventory Analytics</h2>
+
+        <p>Current inventory stock status</p>
+
+    </div>
+
+    <div class="chart-container">
+
+        <canvas id="inventoryAnalyticsChart"></canvas>
+
+    </div>
+
+</section>
+
+    <div class="chart-container">
+
+        <canvas id="salesChannelChart"></canvas>
+
+    </div>
+
+</section>
+
+    <div class="chart-container">
+
+        <canvas id="monthlyRevenueChart"></canvas>
+
+    </div>
+
+</section>
+
+<section class="chart-section">
+
+    <div class="section-header">
+
+        <h2>Sales Distribution</h2>
+
+        <p>Revenue distribution by category</p>
+
+    </div>
+
+    <div class="chart-container">
+
+        <canvas id="salesDoughnutChart"></canvas>
+
+    </div>
+
+</section>
+</section>
+<div class="filters">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="🔍 Search product or customer..."
+    >
+
+    <select id="categoryFilter">
+
+        <option value="All">
+            All Categories
+        </option>
+
+        <option value="Grocery">
+            Grocery
+        </option>
+
+        <option value="Dairy">
+            Dairy
+        </option>
+
+        <option value="Snacks">
+            Snacks
+        </option>
+
+        <option value="Beverages">
+            Beverages
+        </option>
+
+    </select>
+
+    <input
+        type="date"
+        id="dateFilter"
+    >
+
+    <select id="sortFilter">
+
+        <option value="default">
+            ↕️ Sort By
+        </option>
+
+        <option value="nameAsc">
+            🔤 Product A → Z
+        </option>
+
+        <option value="nameDesc">
+            🔤 Product Z → A
+        </option>
+
+        <option value="quantityHigh">
+            📦 Quantity High → Low
+        </option>
+
+        <option value="quantityLow">
+            📦 Quantity Low → High
+        </option>
+
+        <option value="priceHigh">
+            💰 Price High → Low
+        </option>
+
+        <option value="priceLow">
+            💰 Price Low → High
+        </option>
+
+        <option value="dateNew">
+            📅 Newest First
+        </option>
+
+        <option value="dateOld">
+            📅 Oldest First
+        </option>
+
+    </select>
+
+</div>
+<!-- Product Details -->
+ <section class="table-section">
+    <div class="section-header">
+        <h2>Product Details</h2>
+        <p>Recent supermarket sales</p>
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+
+            <tbody id="productTableBody">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<div class="pagination-container">
+
+    <div class="pagination-info">
+        <span id="paginationInfo">
+            Showing 1–10 of 10
+        </span>
+    </div>
+
+    <div class="pagination-controls">
+
+        <button id="prevPageBtn">
+            ◀ Previous
+        </button>
+
+        <span id="pageNumber">
+            Page 1
+        </span>
+
+        <button id="nextPageBtn">
+            Next ▶
+        </button>
+
+    </div>
+
+</div>
+<!-- Low Stock Alert -->
+
+<div class="alert-box" id="lowStockAlert">
+    ⚠️ Checking stock status...
+</div>
+<!-- Inventory Section -->
+
+<section class="table-section">
+
+    <div class="section-header">
+        <h2>Inventory Status</h2>
+        <p>Monitor product stock levels</p>
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+
+            <tbody id="inventoryTableBody">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- Top Selling Products -->
+
+<section class="table-section">
+
+    <div class="section-header">
+        <h2>Top Selling Products</h2>
+        <p>Products with the highest sales quantity</p>
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Quantity Sold</th>
+                </tr>
+            </thead>
+
+            <tbody id="topProductsBody">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- Sales Performance -->
+
+<section class="cards performance-cards">
+
+    <div class="card">
+
+        <div class="card-icon">📈</div>
+
+        <h4>Average Sale</h4>
+
+        <h2 id="averageSale">
+            ₹0
+        </h2>
+
+    </div>
+<!-- Customer Summary -->
+
+<section class="table-section" id="customers">
+
+    <div class="section-header">
+
+        <h2>Customer Summary</h2>
+
+        <p>
+            Customers who made purchases
+        </p>
+        <section class="chart-section" id="customerAnalytics">
+
+    <div class="section-header">
+
+        <h2>Customer Analytics</h2>
+
+        <p>Customer-wise spending, orders, and quantity analysis</p>
+
+    </div>
+
+    <div class="chart-container">
+        <canvas id="customerSpendingChart"></canvas>
+    </div>
+
+    <br>
+
+    <div class="chart-container">
+        <canvas id="customerOrdersChart"></canvas>
+    </div>
+
+    <br>
+
+    <div class="chart-container">
+        <canvas id="customerQuantityChart"></canvas>
+    </div>
+
+</section>
+        <button id="downloadReportBtn" class="download-btn">
+    📥 Download CSV Report
+</button>
+<button id="printReportBtn" class="print-btn">
+    🖨️ Print Report
+</button>
+        <!-- Reports Section -->
+
+<section class="table-section" id="reports">
+
+    <div class="section-header">
+
+        <h2>Sales Reports</h2>
+
+        <p>
+            Overall supermarket sales summary
+        </p>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Report</th>
+                    <th>Value</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody id="reportsTableBody">
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+    </div>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+                    <th>Customer</th>
+                    <th>Total Orders</th>
+                    <th>Total Quantity</th>
+                    <th>Total Spent</th>
+                </tr>
+
+            </thead>
+
+            <tbody id="customerTableBody">
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+    <div class="card">
+
+        <div class="card-icon">🏆</div>
+
+        <h4>Best Selling Product</h4>
+
+        <h2 id="bestProduct">
+            -
+        </h2>
+
+    </div>
+
+
+    <div class="card">
+
+        <div class="card-icon">⚠️</div>
+
+        <h4>Low Stock Products</h4>
+
+        <h2 id="lowStockCount">
+            0
+        </h2>
+
+    </div>
+
+</section>
+                <p>
+                    Daily sales revenue
+                </p>
+
+            </div>
+
+            <div class="chart-container">
+
+                <canvas id="salesChart"></canvas>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+    <!-- Product Details Modal -->
+
+<div id="productModal" class="product-modal">
+
+    <div class="product-modal-content">
+
+        <span id="closeProductModal" class="close-modal">
+            &times;
+        </span>
+
+        <h2 id="modalProductName">
+            Product Details
+        </h2>
+
+        <div class="modal-details">
+
+            <p>
+                <strong>Category:</strong>
+                <span id="modalCategory"></span>
+            </p>
+
+            <p>
+                <strong>Quantity Sold:</strong>
+                <span id="modalQuantity"></span>
+            </p>
+
+            <p>
+                <strong>Price:</strong>
+                <span id="modalPrice"></span>
+            </p>
+
+            <p>
+                <strong>Total Revenue:</strong>
+                <span id="modalRevenue"></span>
+            </p>
+
+            <p>
+                <strong>Customer:</strong>
+                <span id="modalCustomer"></span>
+            </p>
+
+            <p>
+                <strong>Date:</strong>
+                <span id="modalDate"></span>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
