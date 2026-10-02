@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "product": "Rice",
+        "category": "Grocery",
+        "quantity": 10,
+        "price": 1200,
+        "customer": "Bhuvana",
+        "date": "2026-09-28"
+    },
+    {
+        "id": 2,
+        "product": "Milk",
+        "category": "Dairy",
+        "quantity": 20,
+        "price": 50,
+        "customer": "Anitha",
+        "date": "2026-09-28"
+    },
+    {
+        "id": 3,
+        "product": "Cooking Oil",
+        "category": "Grocery",
+        "quantity": 8,
+        "price": 180,
+        "customer": "Karthik",
+        "date": "2026-09-27"
+    },
+    {
+        "id": 4,
+        "product": "Biscuit",
+        "category": "Snacks",
+        "quantity": 25,
+        "price": 30,
+        "customer": "Priya",
+        "date": "2026-09-27"
+    },
+    {
+        "id": 5,
+        "product": "Soft Drink",
+        "category": "Beverages",
+        "quantity": 15,
+        "price": 60,
+        "customer": "Rahul",
+        "date": "2026-09-26"
+    },
+    {
+        "id": 6,
+        "product": "Wheat Flour",
+        "category": "Grocery",
+        "quantity": 12,
+        "price": 250,
+        "customer": "Meena",
+        "date": "2026-09-26"
+    },
+    {
+        "id": 7,
+        "product": "Curd",
+        "category": "Dairy",
+        "quantity": 18,
+        "price": 40,
+        "customer": "Arun",
+        "date": "2026-09-25"
+    },
+    {
+        "id": 8,
+        "product": "Chips",
+        "category": "Snacks",
+        "quantity": 30,
+        "price": 20,
+        "customer": "Divya",
+        "date": "2026-09-25"
+    },
+    {
+        "id": 9,
+        "product": "Orange Juice",
+        "category": "Beverages",
+        "quantity": 10,
+        "price": 90,
+        "customer": "Sanjay",
+        "date": "2026-09-24"
+    },
+    {
+        "id": 10,
+        "product": "Sugar",
+        "category": "Grocery",
+        "quantity": 15,
+        "price": 55,
+        "customer": "Lakshmi",
+        "date": "2026-09-24"
+    }
+]
